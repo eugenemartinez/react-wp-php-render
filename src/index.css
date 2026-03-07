@@ -1,0 +1,14 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+}
+
+.wp-site-blocks {
+  padding: 0 !important;
+  max-width: none !important;
+}

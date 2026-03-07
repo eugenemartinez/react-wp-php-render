@@ -1,0 +1,25 @@
+{
+  "name": "react-php-render",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"wp-scripts start --output-path build/blocks\" \"npx @tailwindcss/cli -i ./src/index.css -o ./build/styles/index.css --watch\"",
+    "build": "wp-scripts build --output-path build/blocks && npx @tailwindcss/cli -i ./src/index.css -o ./build/styles/index.css",
+    "package": "npm run build && node package-theme.js",
+    "link": "node symlink.js",
+    "unlink": "node symlink.js --remove"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "@tailwindcss/typography": "^0.5.19",
+    "@wordpress/scripts": "^31.6.0",
+    "concurrently": "^9.2.1",
+    "gsap": "^3.14.2",
+    "tailwindcss": "^4.2.1"
+  }
+}
