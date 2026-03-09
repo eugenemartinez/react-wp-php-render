@@ -2,18 +2,18 @@
 
 // Load theme styles
 function theme_scripts() {
-    wp_enqueue_style(
+  wp_enqueue_style(
     'theme-style',
-    get_template_directory_uri() . '/build/styles/index.css',
+    get_template_directory_uri() . '/style/index.css',
     [],
-    filemtime(get_template_directory() . '/build/styles/index.css')
-    );
+    filemtime(get_template_directory() . '/style/index.css')
+  );
 }
 add_action('wp_enqueue_scripts', 'theme_scripts');
 
 // Register blocks
 function theme_register_blocks() {
-  $blocks_dir = get_template_directory() . '/blocks';
+  $blocks_dir = get_template_directory() . '/build/blocks';
 
   foreach (glob($blocks_dir . '/*/block.json') as $block) {
     register_block_type($block);
@@ -49,3 +49,15 @@ function theme_search_filter($query) {
   return $query;
 }
 add_filter('pre_get_posts', 'theme_search_filter');
+
+// Set default blocks for front page
+function theme_default_front_page_content($content, $post) {
+  if ($post->post_name !== 'home' || !empty($content)) return $content;
+
+  return '<!-- wp:theme/hero /-->
+<!-- wp:theme/about /-->
+<!-- wp:theme/services /-->
+<!-- wp:theme/contact /-->
+<!-- wp:theme/footer /-->';
+}
+add_filter('default_content', 'theme_default_front_page_content', 10, 2);

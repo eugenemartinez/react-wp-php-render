@@ -1,6 +1,6 @@
-@import './fonts.css';
-@import './tailwind.css';
-@import './theme.css';
+@import './css/fonts.css';
+@import './css/tailwind.css';
+@import './css/theme.css';
 
 body {
   margin: 0 !important;
